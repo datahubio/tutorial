@@ -273,7 +273,7 @@ We now have a README file ready to be used on DataHub Next, let's visualize our 
 
 ## Go to your project's page on DataHub
 
-It's time to check the results. In order to do that, edit the following URL, replacing `{'{'}owner{'}'}` with your user or org id and `{'{'}project{'}'}` with the name of your repo:
+It's time to check the results. In order to do that, edit the following URL, replacing `{owner}` with your user or org id and `{project}` with the name of your repo:
 
 datahub.io/@{'{'}owner{'}'}/{'{'}project{'}'}
 
