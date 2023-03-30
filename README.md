@@ -12,15 +12,31 @@ The structure and text formatting of the documents are created with markdown (ta
 
 And guess what? What you are reading right now is a data rich document powered by DataHub Next, that's why we can do this:
 
-=> INSERT LINE CHART HERE
+<LineChart data={
+    [
+      ["1850",-0.41765878],
+      ["1851",-0.2333498],
+      ["1852",-0.22939907],
+      ["1853",-0.27035445],
+      ["1854",-0.29163003]
+    ]
+} />
 
 Awesome, right? Even more awesome is that this chart is created by simply having the following snippet in this document:
 
 ```
-=> INSERT SNIPPET HERE
+<LineChart data={
+    [
+      ["1850",-0.41765878],
+      ["1851",-0.2333498],
+      ["1852",-0.22939907],
+      ["1853",-0.27035445],
+      ["1854",-0.29163003]
+    ]
+} />
 ```
 
-You can check out the full source of the data rich document you are reading [here]().
+You can check out the full source of the data rich document you are reading [here](https://github.com/datahubio/tutorial).
 
 More on how to create charts and tables later, but now, this must be coming from somewhere, right?
 
@@ -39,9 +55,9 @@ First, create a repo under your organization or user in GitHub. DataHub Next cur
 Now, create a README.md file. In this file, feel free to use anything that markdown has to offer. For this tutorial, we are going to use the following basic structure:
 
 ```markdown
-# Personal monthly costs 2023
+# Personal annual costs
 
-This is the tracking of my personal monthly costs on 2023.
+This is the tracking of my personal annual costs.
 
 ## Table
 
@@ -56,36 +72,75 @@ Let's add a table to the README file. There are different ways to specify the da
 You can specify `data` and `cols`, like that:
 
 ```
-=> INSERT TABLE SNIPPET HERE
+<Table cols={[
+    { key: 'id', name: 'ID' },
+    { key: 'firstName', name: 'First name' },
+    { key: 'lastName', name: 'Last name' },
+    { key: 'age', name: 'Age' }
+  ]} data={[
+    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  ]}
+/>
 ```
 
 Or you can pass inline CSV data to the table:
 
 ```
-=> INSERT TABLE SNIPPET HERE
+<Table csv={`
+Year,Temp Anomaly
+1850,-0.418
+2020,0.923
+`} />
 ```
 
 Or you can specify a url to a CSV file, which can be a relative link to a file in your repo (e.g `data.csv`) or an external URL:
 
 ```
-=> INSERT TABLE SNIPPET HERE
+<Table url='data.csv' />
 ```
 
-For this tutorial, let's go with the first option, so, under the `## Table` header in your file, add the following snippet:
+For this tutorial, let's go with the second option, so, under the `## Table` header in your file, add the following snippet:
 
 ```
-=> INSERT TABLE SNIPPET HERE
+<Table csv={`
+Year,Cost
+2018,50345.50
+2019,65272.20
+2020,48413.80
+2021,76213.50
+2022,71653.60
+`} />
 ```
 
 Note that tables can also be made full width by setting the `fullWidth` property:
 
 ```
-=> INSERT TABLE SNIPPET HERE
+<Table fullWidth csv={`
+Year,Cost
+2018,50345.50
+2019,65272.20
+2020,48413.80
+2021,76213.50
+2022,71653.60
+`} />
 ```
 
 Check out how this looks when rendered:
 
-=> INSERT FULLWIDTH TABLE HERE
+<Table fullWidth csv={`
+Year,Cost
+2018,50345.50
+2019,65272.20
+2020,48413.80
+2021,76213.50
+2022,71653.60
+`} />
 
 ### Graphs
 
@@ -94,31 +149,113 @@ Now, let's add a graph to the README file. There's a variety of ways to create c
 For charts that demand more customization, the Vega and VegaLite components can be used:
 
 ```
-=> INSERT VEGA SNIPPET HERE
-=> INSERT VEGA LITE SNIPPET HERE
+<VegaLite data={ { "table": [
+      {
+        "y": -0.418,
+        "x": 1850
+      },
+      {
+        "y": 0.923,
+        "x": 2020
+      }
+      ]
+    }
+  } spec={
+    {
+      "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+      "mark": "bar",
+      "data": {
+          "name": "table"
+      },
+      "encoding": {
+          "x": {
+              "field": "x",
+              "type": "ordinal"
+          },
+          "y": {
+              "field": "y",
+              "type": "quantitative"
+          }
+      }
+    }
+  } />
 ```
 
 To keep it simple, we are going to use the LineChart component on this tutorial. Add the following snippet to your README file under the `## Chart` header:
 
 ```
-=> INSERT LINECHART SNIPPET HERE
+<LineChart data={
+    [
+        ["2018",50345.50]
+        ["2019",65272.20]
+        ["2020",48413.80]
+        ["2021",76213.50]
+        ["2022",71653.60]
+    ]
+  }
+  />
 ```
 
 This is going to look like this when rendered:
 
-=> INSERT LINECHART HERE
+<LineChart data={
+    [
+        ["2018",50345.50]
+        ["2019",65272.20]
+        ["2020",48413.80]
+        ["2021",76213.50]
+        ["2022",71653.60]
+    ]
+  }
+/>
 
 And just like for tables, line charts can also be made full width, check out how this same line chart looks like with the `fullWidth` property:
 
-=> INSERT FULLWIDTH LINECHART HERE
+<LineChart fullWidth data={
+    [
+        ["2018",50345.50]
+        ["2019",65272.20]
+        ["2020",48413.80]
+        ["2021",76213.50]
+        ["2022",71653.60]
+    ]
+  }
+/>
   
 
 ### Final document
 
 At this point, your document should look like this:
 
-```
-=>  FULL README 
+```markdown
+# Personal annual costs
+
+This is the tracking of my personal annual costs.
+
+## Table
+
+<Table csv={`
+Year,Cost
+2018,50345.50
+2019,65272.20
+2020,48413.80
+2021,76213.50
+2022,71653.60
+`} />
+
+## Chart
+
+<LineChart data={
+    [
+        ["2018",50345.50]
+        ["2019",65272.20]
+        ["2020",48413.80]
+        ["2021",76213.50]
+        ["2022",71653.60]
+    ]
+  }
+/>
+
 ```
 
 We now have a README file ready to be used on DataHub Next, let's visualize our creation.
