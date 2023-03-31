@@ -1,16 +1,16 @@
-# Tutorial: Publishing data rich documents on DataHub Next
+# Tutorial: Publishing data rich documents on DataHub
 
-Hi, welcome to DataHub Next : ). In this tutorial we are going to cover the basics of publishing a data rich document on our initial version of DataHub Next.
+Hi, welcome to DataHub : ). In this tutorial we are going to cover the basics of publishing a data rich document.
 
 ### But wait, what is a data rich document?
 
-A data rich document is a document in which the writer can easily mix formatted text content with data visualizations. This means that you don't have to code nor embed your charts and tables, those can be added to the document with a very simple syntax, passing inline-data or simply referencing your data files. What you end up with is a plain text, human-readable document which is simple to edit and looks awesome when rendered in DataHub Next!
+A data rich document is a document in which the writer can easily mix formatted text content with data visualizations. This means that you don't have to code nor embed your charts and tables, those can be added to the document with a very simple syntax, passing inline-data or simply referencing your data files. What you end up with is a plain text, human-readable document which is simple to edit and looks awesome when rendered in DataHub!
 
 ### What does this syntax looks like?
 
 The structure and text formatting of the documents are created with markdown (take a look at [this guide](https://www.datopian.com/playbook/markdown) to learn more about markdown). But it's not simply markdown, it's markdown on steroids: writers are capable of easily adding tables of content, mathematical formulas, data visualizations and more!
 
-And guess what? What you are reading right now is a data rich document powered by DataHub Next, that's why we can do this:
+And guess what? What you are reading right now is a data rich document powered by DataHub, that's why we can do this:
 
 <LineChart data={
     [
@@ -40,15 +40,15 @@ You can check out the full source of the data rich document you are reading [her
 
 More on how to create charts and tables later, but now, this must be coming from somewhere, right?
 
-### What is a DataHub Next project?
+### What is a DataHub project?
 
-A DataHub Next project is simply a GitHub repo with a README and, potentially, data files. That's right: you can take advantage of everything that GitHub offers in terms of revisioning, changes history and so on and transform your repo into a data rich document.
+A DataHub project is simply a GitHub repo with a README and, potentially, data files. That's right: you can take advantage of everything that GitHub offers in terms of revisioning, changes history and so on and transform your repo into a data rich document.
 
 Imagine how cool it would be to store your reports, datasets and analysis in this format. Now, let's learn how to actually do it.
 
 ## Create a GitHub repo
 
-First, create a repo under your organization or user in GitHub. DataHub Next currently does not support private repos, make sure this new repo is public and that your main branch is named "main" (updates on this coming soon).
+First, create a repo under your organization or user in GitHub. DataHub currently does not support private repos, make sure this new repo is public and that your main branch is named "main" (updates on this coming soon).
 
 ## Push a README.md file to the repo
 
@@ -155,7 +155,7 @@ Year,Cost
 
 ### Graphs
 
-Now, let's add a graph to the README file. There's a variety of ways to create charts in DataHub Next.
+Now, let's add a graph to the README file. There's a variety of ways to create charts in DataHub.
 
 For charts that demand more customization, the Vega and VegaLite components can be used:
 
@@ -269,7 +269,7 @@ Year,Cost
 
 ```
 
-We now have a README file ready to be used on DataHub Next, let's visualize our creation.
+We now have a README file ready to be used on DataHub, let's visualize our creation.
 
 ## Go to your project's page on DataHub
 
