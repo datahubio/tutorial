@@ -275,7 +275,7 @@ We now have a README file ready to be used on DataHub, let's visualize our creat
 
 It's time to check the results. In order to do that, edit the following URL, replacing `{owner}` with your user or org id and `{project}` with the name of your repo:
 
-datahub.io/@{'{'}owner{'}'}/{'{'}project{'}'}
+demo.datahub.io/@{'{'}owner{'}'}/{'{'}project{'}'}
 
 Finally, access the URL.
 
